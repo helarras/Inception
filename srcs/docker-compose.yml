@@ -104,6 +104,18 @@ services:
 
     volumes:
       - wp-vdata:/home/ftpuser
+  
+  website:
+    restart: always
+    networks:
+      - inception_net
+    
+    build: ./requirements/website/
+    image: website
+    container_name: website-c
+    ports:
+      - 8080:8080
+
 
 networks:
   inception_net:
