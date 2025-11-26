@@ -9,7 +9,7 @@ services:
     container_name: mariadb-c
     environment:
       - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
+      - DB_ADMIN=${DB_ADMIN}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
 
@@ -38,7 +38,9 @@ services:
     environment:
       - WP_DB_HOST=${WP_DB_HOST}
       - WP_DB_NAME=${WP_DB_NAME}
+      - WP_DB_ADMIN=${WP_DB_ADMIN}
       - WP_DB_USER=${WP_DB_USER}
+      - WP_DB_USER_PASS=${WP_DB_USER_PASS}
       - WP_DB_PASSWORD=${WP_DB_PASSWORD}
       - WP_WEBSITE_URL=${WP_WEBSITE_URL}
       - WP_WEBSITE_TTILE=${WP_WEBSITE_TTILE}

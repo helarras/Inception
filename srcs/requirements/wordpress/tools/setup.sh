@@ -16,7 +16,7 @@ if ! wp core is-installed --allow-root 2>/dev/null; then
 	echo "CREATING CONFIG FILE..."
 	wp config create \
 	--dbname=$WP_DB_NAME \
-	--dbuser=$WP_DB_USER \
+	--dbuser=$WP_DB_ADMIN \
 	--dbpass=$WP_DB_PASSWORD \
 	--dbhost=$WP_DB_HOST --allow-root
 
@@ -31,10 +31,17 @@ if ! wp core is-installed --allow-root 2>/dev/null; then
 	wp core install \
 		--url=$WP_WEBSITE_URL \
 		--title=$WP_WEBISTE_TITLE \
-		--admin_user=$WP_DB_USER \
+		--admin_user=$WP_DB_ADMIN \
 		--admin_password=$WP_DB_PASSWORD \
-		--admin_email=wpuser@gmail.com \
+		--admin_email=$WP_DB_ADMIN@gmail.com \
 		--allow-root
+	
+	echo "CREATING SUBSCRIBER USER..."
+	wp user create \
+	$WP_DB_USER $WP_DB_USER@gmail.com \
+	--role=author \
+	--user_pass=$WP_DB_USER_PASS \
+	--allow-root
 	chown -R www-data:www-data ./wp-content
 else
 	echo "WORDPRESS IS ALREADY INSTALLED!!!!!!!"

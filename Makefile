@@ -27,5 +27,5 @@ rmi:
 	docker compose -f ${COMPOSE_PATH} down --rmi local
 
 rmv:
-	rm -rf ~/data
+	sudo rm -rf ~/data
 
