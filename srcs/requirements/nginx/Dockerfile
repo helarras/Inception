@@ -1,11 +1,13 @@
 FROM debian:bookworm
 
 RUN apt-get update && apt-get install -y \
-    nginx nano telnet net-tools \
+    nginx openssl nano telnet net-tools \
     && mkdir -p /etc/nginx/certs \
     && rm -rf /var/lib/apt/lists/*
 
-# COPY conf/nginx.conf /etc/nginx/conf.d/
+COPY tools/setup.sh /usr/local/bin/setup.sh
+RUN chmod +x /usr/local/bin/setup.sh
+
 EXPOSE 443 4000
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["setup.sh"]

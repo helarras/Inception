@@ -66,8 +66,10 @@ services:
     ports:
       - 443:443
       - 4001:4000
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME}
+
     volumes:
-      - ./requirements/nginx/certs:/etc/nginx/certs:ro
       - ./requirements/nginx/conf/:/etc/nginx/conf.d/
       - wp-vdata:/var/www/html
       - adminer-vdata:/var/www/adminer
@@ -135,6 +137,20 @@ services:
       - 4000:4000
     volumes:
       - adminer-vdata:/var/www/adminer
+  
+  cadvisor:
+    container_name: cadvisor
+    build: ./requirements/cadvisor
+    restart: always
+    ports:
+      - "8088:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - inception_net
     
 
 networks:
@@ -144,18 +160,21 @@ networks:
 
 volumes:
   mariadb-vdata:
+    name: mariadb-vdata
     driver: local
     driver_opts:
       type: none
       o: bind
       device: /home/helarras/data/mariadb
   wp-vdata:
+    name: wp-vdata
     driver: local
     driver_opts:
       type: none
       o: bind
       device: /home/helarras/data/wordpress
   adminer-vdata:
+    name: adminer-vdata
     driver: local
     driver_opts:
       type: none
