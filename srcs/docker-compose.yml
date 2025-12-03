@@ -70,7 +70,7 @@ services:
       - DOMAIN_NAME=${DOMAIN_NAME}
 
     volumes:
-      - ./requirements/nginx/conf/:/etc/nginx/conf.d/
+      - ./requirements/nginx/conf/:/etc/nginx/sites-available/
       - wp-vdata:/var/www/html
       - adminer-vdata:/var/www/adminer
 
