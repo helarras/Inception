@@ -5,9 +5,6 @@ RUN apt-get update && apt-get install -y \
 	php8.2-mysql \
 	redis-tools \
 	curl \
-	nano \
-	net-tools \
-	iputils-ping \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl https://wordpress.org/latest.tar.gz -o /tmp/wordpress.tar.gz \

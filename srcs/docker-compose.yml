@@ -1,6 +1,6 @@
 services:
   mariadb:
-    restart: always
+    restart: on-failure
     networks:
       - inception_net
 
@@ -24,7 +24,7 @@ services:
       - mariadb-vdata:/var/lib/mysql
 
   wordpress:
-    restart: always
+    restart: on-failure
     networks: 
       - inception_net
 
@@ -53,7 +53,7 @@ services:
       - wp-vdata:/var/www/html
 
   nginx:
-    restart: always
+    restart: on-failure
     networks:
       - inception_net
 
@@ -65,7 +65,7 @@ services:
       - adminer
     ports:
       - 443:443
-      - 4001:4000
+      - 4000:4000
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME}
 
@@ -76,7 +76,7 @@ services:
 
 
   redis:
-    restart: always
+    restart: on-failure
     networks:
       - inception_net
 
@@ -94,7 +94,7 @@ services:
       - WP_CACHE_KEY_SALT=${WP_CACHE_KEY_SALT}
   
   ftp:
-    restart: always
+    restart: on-failure
     networks:
     - inception_net
 
@@ -115,7 +115,7 @@ services:
       - wp-vdata:/home/ftpuser
   
   website:
-    restart: always
+    restart: on-failure
     networks:
       - inception_net
     
@@ -126,24 +126,22 @@ services:
       - 8080:8080
 
   adminer:
-    restart: always
+    restart: on-failure
     networks:
       - inception_net
 
     build: ./requirements/adminer/
     image: adminer
     container_name: adminer-c
-    ports:
-      - 4000:4000
     volumes:
       - adminer-vdata:/var/www/adminer
   
   cadvisor:
-    container_name: cadvisor
+    container_name: cadvisor-c
     build: ./requirements/cadvisor
-    restart: always
+    restart: on-failure
     ports:
-      - "8088:8080"
+      - 5000:8080
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw

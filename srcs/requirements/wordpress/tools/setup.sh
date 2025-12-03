@@ -3,7 +3,6 @@
 echo "CHECKING WP IS-INSTALLED"
 if ! wp core is-installed --allow-root 2>/dev/null; then
     # WP is not installed. Let's try installing it.
-	# mkdir -p /var/www/html \
 	echo "COPYING WORDPRESS FILES..."
 
 	cp -r /usr/src/wordpress/* ./ \
@@ -36,7 +35,7 @@ if ! wp core is-installed --allow-root 2>/dev/null; then
 		--admin_email=$WP_DB_ADMIN@gmail.com \
 		--allow-root
 	
-	echo "CREATING SUBSCRIBER USER..."
+	echo "CREATING USER..."
 	wp user create \
 	$WP_DB_USER $WP_DB_USER@gmail.com \
 	--role=author \
@@ -49,5 +48,5 @@ else
 fi
 
 wp plugin install redis-cache --activate --allow-root && wp redis enable --allow-root
-# running php-fpm with -F option to run in the foreground
+
 exec php-fpm8.2 -F

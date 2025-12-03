@@ -25,7 +25,3 @@ port = 3306
 datadir = /var/lib/mysql
 socket = /run/mysqld/mysqld.sock
 bind-address = 0.0.0.0
-
-# Import all .cnf files from configuration directory
-#!includedir /etc/mysql/conf.d/
-#!includedir /etc/mysql/mariadb.conf.d/

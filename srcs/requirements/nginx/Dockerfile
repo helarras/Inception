@@ -1,7 +1,7 @@
 FROM debian:bookworm
 
 RUN apt-get update && apt-get install -y \
-    nginx openssl nano telnet net-tools \
+    nginx openssl \
     && mkdir -p /etc/nginx/certs \
     && rm -rf /var/lib/apt/lists/*
 

@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-RUN apt-get update && apt-get install -y mariadb-server nano net-tools \
+RUN apt-get update && apt-get install -y mariadb-server \
 	&& rm -rf /var/lib/apt/lists/*
 
 COPY conf/mariadb.cnf /etc/mysql/mariadb.conf.d/zz-mariadb.cnf
