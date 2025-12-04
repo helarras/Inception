@@ -137,6 +137,7 @@ services:
       - adminer-vdata:/var/www/adminer
   
   cadvisor:
+    image: cadvisor
     container_name: cadvisor-c
     build: ./requirements/cadvisor
     restart: on-failure
