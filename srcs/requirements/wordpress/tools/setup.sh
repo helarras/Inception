@@ -8,9 +8,6 @@ if ! wp core is-installed --allow-root 2>/dev/null; then
 	cp -r /usr/src/wordpress/* ./ \
 	&& rm -rf /usr/src/wordpress/* \
 	&& rmdir /usr/src/wordpress
-	
-	# changing owner of /var/www/html to www-data user as php-fpm uses this user.
-	chown -R www-data:www-data ./
 
 	echo "CREATING CONFIG FILE..."
 	wp config create \
