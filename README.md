@@ -74,5 +74,41 @@ Note: Don't forget to paste the .env file containing the required environment va
 #### AI-Usage:
   AI tools were used to help improve the wording and organization of the documentation, as well as to clarify certain technical points related to Docker.
 
+##  Project Description
+
+### Use of Docker
+Docker is used to separate the different services into independent containers.  
+This makes the system easier to manage, more secure, and more scalable.  
+Each service is isolated but still able to communicate inside a controlled environment.
+
+### Included Sources
+- Dockerfiles to build the images
+- docker-compose.yml to run all containers
+- Configuration files and scripts for each service
+
+### Main Design Choices
+The project uses multiple containers so that each service can be updated or restarted without affecting the others.  
+A Docker network is used so services can communicate privately.  
+Persistent data is stored using volumes to avoid data loss.
+
+---
+
+##  Technical Comparisons
+
+### Virtual Machines vs Docker
+Virtual Machines run a full operating system for each instance, which requires more resources and is slower to start.  
+Docker containers share the host OS kernel, making them faster, lighter, and easier to deploy for this type of project.
+
+### Secrets vs Environment Variables
+Environment variables are easier to use but not fully secure.  
+Secrets offer better protection for sensitive information and are stored separately from the main configuration.
+
+### Docker Network vs Host Network
+A Docker network isolates communication between containers, increasing security and preventing conflicts.  
+The host network gives containers direct access to the host’s network but removes that isolation.
+
+### Docker Volumes vs Bind Mounts
+Volumes are managed by Docker and are better for persistent data used by containers.  
+Bind mounts directly access files from the host machine, which is useful during development but less safe in production.
 
 
