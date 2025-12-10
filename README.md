@@ -12,7 +12,9 @@ It consists of setting up multiple services, each running in its own container, 
 
 #### 1. Prerequisites
 ```bash
-Docker, Make
+Git
+Make
+Docker
 ```
 #### 2. Environment Configuration
 The project requires a `.env` file located in the `srcs/` directory.
@@ -61,7 +63,7 @@ git clone git@vogsphere.1337.ma:vogsphere/intra-uuid-92a6bf16-9b33-4921-aca6-ca5
 cd inception
 make
 ```
-Note: Don't forget to paste the .env file containing the required environment variables inside srcs/ directory
+Note: Don't forget to paste the .env file containing the required environment variables inside `srcs/` directory
 
 ##  Resources
 - Docker
