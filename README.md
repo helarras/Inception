@@ -71,5 +71,8 @@ Note: Don't forget to paste the .env file containing the required environment va
   - Nginx Handbook: [Nginx article](https://www.freecodecamp.org/news/the-nginx-handbook)
   - SSL/TLS: [SSL/TLS Certificate](https://www.youtube.com/watch?v=T4Df5_cojAs)
 
+#### AI-Usage:
+  AI tools were used to help improve the wording and organization of the documentation, as well as to clarify certain technical points related to Docker.
+
 
 
